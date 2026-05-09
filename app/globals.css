@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #FDFDFD;
+  --color-primary-text: #111111;
+  --color-border-black: #000000;
+  --color-electric-blue: #3B82F6;
+  --color-hot-pink: #FF2E63;
+  --color-sun-yellow: #FFD60A;
+  --color-mint-green: #00F5D4;
+  --color-vivid-orange: #FB5607;
+  --color-playful-purple: #8338EC;
+  --color-soft-gray: #E5E5E5;
+  --color-muted-gray: #9CA3AF;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --border-width-brutal: 4px;
+  --shadow-brutal: 4px 4px 0px #000000;
+  --shadow-brutal-pink: 6px 6px 0px #FF2E63;
+  --shadow-brutal-blue: 6px 6px 0px #3B82F6;
+  --shadow-brutal-yellow: 6px 6px 0px #FFD60A;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FDFDFD;
+  --foreground: #111111;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-display);
+  overflow-x: hidden;
+}
+
+@layer base {
+  * {
+    @apply border-border-black;
+  }
 }
