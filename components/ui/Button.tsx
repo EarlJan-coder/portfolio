@@ -1,14 +1,14 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export type ButtonProps = {
   variant?: "primary" | "outline" | "ghost" | "yellow" | "pink" | "blue" | "green" | "orange" | "purple";
   size?: "sm" | "md" | "lg" | "xl";
   offset?: boolean;
-  href?: string;
-}
+} & (
+  | ({ href?: undefined } & React.ButtonHTMLAttributes<HTMLButtonElement>)
+  | ({ href: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>)
+);
 
 const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
