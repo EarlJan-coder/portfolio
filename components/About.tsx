@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import Image from "next/image";
 
 export const About = () => {
   return (
@@ -18,7 +19,13 @@ export const About = () => {
             className="relative"
           >
             <div className="aspect-square bg-white border-4 border-border-black shadow-[12px_12px_0px_#000000] relative overflow-hidden group">
-              <img src="/PFP.png" alt="Profile picture" className="absolute inset-0 w-full h-full object-cover" />
+              <Image 
+                src="/PFP.png" 
+                alt="Profile picture" 
+                fill
+                className="object-cover"
+                priority
+              />
               <div className="absolute bottom-4 left-4 bg-sun-yellow border-2 border-black px-4 py-2 font-mono font-bold shadow-[4px_4px_0px_#000000]">
                 engineer.jpeg
               </div>

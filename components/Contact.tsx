@@ -28,9 +28,9 @@ export const Contact = () => {
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=earljhonmalatag2@gmail.com"
                 target="_blank"
                 rel="noreferrer"
-                className="group relative block w-full p-8 bg-white border-4 border-black text-3xl md:text-5xl font-black tracking-tight shadow-[12px_12px_0px_#000000] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[16px_16px_0px_#3B82F6] transition-all"
+                className="group relative block w-full p-4 md:p-8 bg-white border-4 border-black text-lg sm:text-2xl md:text-5xl font-black tracking-tight shadow-[12px_12px_0px_#000000] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[16px_16px_0px_#3B82F6] transition-all"
               >
-                <span className="relative z-10 flex items-center justify-center gap-4">
+                <span className="relative z-10 flex items-center justify-center gap-4 break-all">
                     <Mail size={48} className="hidden md:block" />
                     earljhonmalatag2@gmail.com
                 </span>
