@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -18,13 +19,13 @@ export const About = () => {
             className="relative"
           >
             <div className="aspect-square bg-white border-4 border-border-black shadow-[12px_12px_0px_#000000] relative overflow-hidden group">
-               {/* Replace with actual image later */}
-               <div className="absolute inset-0 bg-playful-purple/20 flex items-center justify-center">
-                  <span className="text-8xl font-black opacity-20">AVATAR</span>
-               </div>
-               <div className="absolute bottom-4 left-4 bg-sun-yellow border-2 border-black px-4 py-2 font-mono font-bold shadow-[4px_4px_0px_#000000]">
-                 engineer.jpeg
-               </div>
+              <Image src="/PFP.png" alt="Profile picture" fill className="object-cover" />
+              <div className="absolute inset-0 bg-playful-purple/20 flex items-center justify-center">
+                <span className="text-8xl font-black opacity-20">AVATAR</span>
+              </div>
+              <div className="absolute bottom-4 left-4 bg-sun-yellow border-2 border-black px-4 py-2 font-mono font-bold shadow-[4px_4px_0px_#000000]">
+                engineer.jpeg
+              </div>
             </div>
           </motion.div>
 
