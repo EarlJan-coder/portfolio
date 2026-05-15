@@ -42,15 +42,11 @@ export const Contact = () => {
                 <Send size={32} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Button>
 
-            <a href="www.linkedin.com/in/earl-malatag-4230903a8" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/earl-malatag-4230903a8/" target="_blank" rel="noreferrer">
                 <Button variant="outline" size="lg" className="p-6 hover:bg-electric-blue hover:text-white transition-colors group">
                     <LinkedinIcon />
                 </Button>
             </a>
-
-            <Button variant="outline" size="lg" className="p-6 hover:bg-hot-pink hover:text-white transition-colors group">
-                <TwitterIcon />
-            </Button>
 
             <a href="https://github.com/EarlJan-coder" target="_blank" rel="noreferrer">
                 <Button variant="outline" size="lg" className="p-6 hover:bg-vivid-orange hover:text-white transition-colors group">
