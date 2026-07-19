@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export interface ScrollRevealProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ScrollRevealProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   delay?: number;
   once?: boolean;
