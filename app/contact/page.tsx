@@ -1,9 +1,7 @@
 "use client";
 
 import { Mail, Zap } from "lucide-react";
-import { ScrollReveal, StaggerItem } from "@/components/ui/ScrollReveal";
-import { Card, CardContent, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Badge } from "@/components/ui/Badge";
 
 const GithubIcon = ({ size = 18, "aria-hidden": ariaHidden = "true", ...props }: React.SVGProps<SVGSVGElement> & { size?: number; "aria-hidden"?: string }) => (
@@ -18,209 +16,93 @@ const LinkedinIcon = ({ size = 18, "aria-hidden": ariaHidden = "true", ...props 
   </svg>
 );
 
-const ExternalLinkIcon = ({ size = 18, "aria-hidden": ariaHidden = "true", ...props }: React.SVGProps<SVGSVGElement> & { size?: number; "aria-hidden"?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden={ariaHidden} {...props}>
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-    <polyline points="15 3 21 3 21 9"></polyline>
-    <line x1="10" y1="14" x2="21" y2="3"></line>
-  </svg>
-);
-
-const FolderOpenIcon = ({ size = 18, "aria-hidden": ariaHidden = "true", ...props }: React.SVGProps<SVGSVGElement> & { size?: number; "aria-hidden"?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden={ariaHidden} {...props}>
-    <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
-    <path d="M2 10h20"></path>
-  </svg>
-);
-
-const socialLinks = [
-  {
-    name: "Email",
-    href: "mailto:earljhonmalatag2@gmail.com",
-    icon: Mail,
-    description: "earljhonmalatag2@gmail.com",
-    color: "accent",
-    primary: true,
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/EarlJan-coder",
-    icon: GithubIcon,
-    description: "github.com/EarlJan-coder",
-    color: "default",
-    primary: false,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/earl-malatag-4230903a8",
-    icon: LinkedinIcon,
-    description: "linkedin.com/in/earl-malatag-4230903a8",
-    color: "success",
-    primary: false,
-  },
-];
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background py-12 px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background py-16 px-6">
+      <div className="max-w-3xl mx-auto">
         {/* Page Header */}
-        <ScrollReveal className="mb-12">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-            <div>
-              <Badge variant="accent" size="sm" className="mb-3">
-                Open to Opportunities
-              </Badge>
-              <h1 className="text-4xl sm:text-5xl font-bold text-text-primary tracking-tight">
-                Get In Touch
-              </h1>
-              <p className="text-text-secondary mt-3 max-w-2xl">
-                Whether you have a project in mind, a question about my work, or just want to say hello — I&apos;d love to hear from you.
-              </p>
-            </div>
-          </div>
+        <ScrollReveal className="mb-20 text-center">
+          <Badge variant="success" className="bg-success-light text-success border border-success/10 px-4 py-1.5 rounded-full text-sm font-bold mb-6">
+            🟢 Open to Internships/Opportunities
+          </Badge>
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-text-primary tracking-tight leading-tight">
+            Let&apos;s build something.
+          </h1>
+          <p className="text-xl text-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
+            I&apos;m currently looking for new opportunities to contribute and grow. 
+            Whether you have a question or just want to say hi, my inbox is always open.
+          </p>
         </ScrollReveal>
 
-        {/* Primary Contact - Email */}
-        <ScrollReveal className="mb-10">
-          <Card variant="hover" className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-purple-500/5" />
-            <CardContent className="relative p-8 sm:p-12">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        {/* Contact Methods */}
+        <div className="grid grid-cols-1 gap-6 mb-16">
+          <ScrollReveal>
+            <a href="mailto:earljhonmalatag2@gmail.com" className="group">
+              <div className="bg-white p-8 rounded-[32px] border border-border shadow-soft group-hover:shadow-card-hover group-hover:border-accent/20 transition-all duration-500 flex flex-col sm:flex-row items-center gap-8">
+                <div className="w-20 h-20 rounded-3xl bg-accent-light flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                  <Mail size={40} strokeWidth={1.5} />
+                </div>
                 <div className="flex-1 text-center sm:text-left">
-                  <div className="inline-flex items-center gap-2 mb-4">
-                    <span className="w-10 h-10 rounded-[12px] bg-accent-light flex items-center justify-center">
-                      <Mail size={24} className="text-accent" aria-hidden="true" />
-                    </span>
-                    <CardTitle className="text-2xl">Let&apos;s Build Something Together</CardTitle>
-                  </div>
-                  <p className="text-text-secondary mb-4 max-w-md mx-auto sm:mx-0">
-                    I&apos;m currently open to internships, full-time opportunities, and freelance projects.
-                    Feel free to reach out — I typically respond within 24 hours.
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-center gap-3">
-                    <Button variant="primary" href="mailto:earljhonmalatag2@gmail.com" size="lg">
-                      <Mail size={18} aria-hidden="true" />
-                      Email Me
-                    </Button>
-                    <Button variant="secondary" href="https://github.com/EarlJan-coder" size="lg">
-                      <GithubIcon size={18} aria-hidden="true" />
-                      View GitHub
-                    </Button>
-                  </div>
+                  <h3 className="text-2xl font-bold text-text-primary mb-1">Send an Email</h3>
+                  <p className="text-lg text-text-secondary mb-2">earljhonmalatag2@gmail.com</p>
+                  <span className="text-sm font-bold text-accent uppercase tracking-widest group-hover:gap-3 flex items-center justify-center sm:justify-start gap-2 transition-all">
+                    Write a message <Zap size={14} fill="currentColor" />
+                  </span>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </ScrollReveal>
-
-        {/* Social Links Grid */}
-        <ScrollReveal className="mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {socialLinks.map((social, index) => (
-              <StaggerItem key={social.name}>
-                <Card variant="hover" className="h-full group">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`w-14 h-14 rounded-[14px] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300 ${
-                          social.color === "accent"
-                            ? "bg-accent-light text-accent"
-                            : social.color === "success"
-                            ? "bg-success-light text-success"
-                            : "bg-surface-hover text-text-secondary"
-                        }`}
-                      >
-                        <social.icon size={28} aria-hidden="true" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-semibold text-text-primary">{social.name}</h3>
-                          {social.primary && (
-                            <Badge variant="accent" size="sm">Primary</Badge>
-                          )}
-                        </div>
-                        <p className="text-sm text-text-secondary truncate">{social.description}</p>
-                      </div>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-ghost p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                        aria-label={`Open ${social.name} profile`}
-                      >
-                        <ExternalLinkIcon size={18} aria-hidden="true" />
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            ))}
-          </div>
-        </ScrollReveal>
-
-        {/* Quick Actions */}
-        <ScrollReveal className="mb-12">
-          <Card variant="default" className="border-border">
-            <CardContent className="p-6">
-              <h3 className="font-semibold text-text-primary mb-4 flex items-center gap-2">
-                <Zap size={20} className="text-accent" aria-hidden="true" />
-                Quick Actions
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="primary" href="mailto:earljhonmalatag2@gmail.com?subject=Collaboration%20Inquiry&body=Hi%20Earl%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20...">
-                  <Mail size={18} aria-hidden="true" />
-                  Send Email
-                </Button>
-                <Button variant="secondary" href="https://github.com/EarlJan-coder">
-                  <GithubIcon size={18} aria-hidden="true" />
-                  View GitHub
-                </Button>
-                <Button variant="secondary" href="https://linkedin.com/in/earl-malatag-4230903a8">
-                  <LinkedinIcon size={18} aria-hidden="true" />
-                  Connect on LinkedIn
-                </Button>
-                <Button variant="ghost" href="/projects">
-                  <FolderOpenIcon size={18} aria-hidden="true" />
-                  View Projects
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </ScrollReveal>
-
-        {/* Availability Status */}
-        <ScrollReveal delay={0.3}>
-          <Card variant="default" className="bg-success-light border-success/20">
-            <CardContent className="p-6 text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="w-3 h-3 rounded-full bg-success animate-pulse" aria-hidden="true" />
-                <span className="font-semibold text-success">Currently Available</span>
-              </div>
-              <p className="text-text-secondary">
-                Open to internships, full-time positions, and freelance projects.
-                <br />
-                <span className="font-medium">Preferred: Remote · Hybrid (Philippines) · On-site (NCR)</span>
-              </p>
-            </CardContent>
-          </Card>
-        </ScrollReveal>
-
-        {/* Footer CTA */}
-        <ScrollReveal delay={0.4} className="mt-16">
-          <div className="text-center p-8 rounded-[24px] bg-accent-light border border-accent/20">
-            <h3 className="text-2xl font-bold text-accent-dark mb-2">Let&apos;s Build Something Great</h3>
-            <p className="text-text-secondary mb-6 max-w-md mx-auto">
-              Have a project in mind? A question about my work? Or just want to connect?
-              Don&apos;t hesitate to reach out.
-            </p>
-            <a
-              href="mailto:earljhonmalatag2@gmail.com"
-              className="btn-primary inline-flex items-center gap-2"
-            >
-              <Mail size={20} aria-hidden="true" />
-              Start a Conversation
             </a>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <ScrollReveal delay={0.1}>
+              <a href="https://linkedin.com/in/earl-malatag-4230903a8" target="_blank" rel="noopener noreferrer" className="group">
+                <div className="bg-white p-6 rounded-[24px] border border-border shadow-sm group-hover:shadow-card-hover transition-all duration-300 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#0077B5]/10 flex items-center justify-center text-[#0077B5]">
+                    <LinkedinIcon size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-text-primary">LinkedIn</h4>
+                    <p className="text-xs text-text-muted">Connect with me</p>
+                  </div>
+                </div>
+              </a>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <a href="https://github.com/EarlJan-coder" target="_blank" rel="noopener noreferrer" className="group">
+                <div className="bg-white p-6 rounded-[24px] border border-border shadow-sm group-hover:shadow-card-hover transition-all duration-300 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-text-primary/10 flex items-center justify-center text-text-primary">
+                    <GithubIcon size={24} />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-text-primary">GitHub</h4>
+                    <p className="text-xs text-text-muted">Explore my code</p>
+                  </div>
+                </div>
+              </a>
+            </ScrollReveal>
+          </div>
+        </div>
+
+        {/* Location / Status Card */}
+        <ScrollReveal delay={0.3}>
+          <div className="bg-accent-light p-10 rounded-[32px] border border-accent/10 text-center relative overflow-hidden group">
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-accent-dark mb-4">📍 Trece Martires City, Philippines</h3>
+              <p className="text-accent/70 font-medium leading-relaxed max-w-md mx-auto">
+                Available for remote work worldwide or on-site opportunities in the Greater Manila Area.
+              </p>
+              <div className="mt-8 flex justify-center">
+                <div className="px-6 py-2 bg-white rounded-full text-accent font-bold text-sm shadow-sm">
+                  Timezone: GMT+8
+                </div>
+              </div>
+            </div>
+            
+            {/* Decoration */}
+            <div className="absolute -top-12 -right-12 w-32 h-32 bg-accent/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+            <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-accent/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
           </div>
         </ScrollReveal>
       </div>

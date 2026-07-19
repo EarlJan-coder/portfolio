@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { ExternalLink, Database, Server, Code2, Zap } from "lucide-react";
+import { Database, Server, Code2, Zap, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
@@ -189,60 +189,45 @@ export default function ProjectsPage() {
                             <Icon size={24} aria-hidden="true" />
                           </div>
                           <Badge variant={colors.badge as "accent" | "success" | "warning" | "neutral"} size="sm" className="flex-shrink-0">
-                            {project.category}
+                            {project.tech.includes("Solidity") ? "Web3" : project.tech.includes("Google Gemini API") || project.tech.includes("Ollama") ? "AI" : "Full-Stack"}
                           </Badge>
                         </div>
 
                         {/* Content */}
                         <div className="flex-1">
-                          <h3 className="text-xl font-semibold text-text-primary group-hover:text-accent transition-colors mb-2">
+                          <h3 className="text-xl font-bold text-text-primary group-hover:text-accent transition-colors mb-2">
                             {project.title}
                           </h3>
-                          <p className="text-sm text-text-secondary mb-3 font-medium">{project.subtitle}</p>
-                          <p className="text-text-secondary text-sm mb-5 line-clamp-3 flex-1">{project.description}</p>
+                          <p className="text-sm text-text-secondary mb-3 font-semibold leading-snug">{project.subtitle}</p>
+                          <p className="text-text-secondary text-sm mb-6 line-clamp-3 leading-relaxed">{project.description}</p>
 
-                          {/* Highlights */}
-                          <div className="space-y-2 mb-5">
-                            {project.highlights.slice(0, 3).map((highlight, i) => (
-                              <div key={i} className="flex items-start gap-2.5 text-sm text-text-secondary">
-                                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-border-strong mt-1.5" />
-                                <span className="line-clamp-1">{highlight}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Tech Stack */}
-                          <div className="flex flex-wrap gap-2">
-                            {project.tech.slice(0, 5).map((tech) => (
-                              <span key={tech} className="tag text-xs">
+                          {/* Tech Tags */}
+                          <div className="flex flex-wrap gap-1.5 mt-auto">
+                            {project.tech.slice(0, 4).map((tech) => (
+                              <span key={tech} className="px-2 py-0.5 bg-surface-hover text-text-muted text-[10px] font-bold uppercase tracking-wider rounded border border-border">
                                 {tech}
                               </span>
                             ))}
-                            {project.tech.length > 5 && (
-                              <span className="tag text-xs text-text-muted border-border">
-                                +{project.tech.length - 5}
+                            {project.tech.length > 4 && (
+                              <span className="px-2 py-0.5 bg-surface text-text-muted text-[10px] font-bold uppercase tracking-wider rounded border border-dashed border-border">
+                                +{project.tech.length - 4}
                               </span>
                             )}
                           </div>
                         </div>
 
-                        {/* Footer with links */}
-                        <div className="pt-4 border-t border-border flex items-center justify-between">
-<span className="text-xs text-text-muted flex items-center gap-1">
-  <GithubIcon />
-  View Code
-</span>
+                        {/* Footer */}
+                        <div className="pt-6 mt-6 border-t border-border flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-text-muted group-hover:text-accent transition-colors">
+                            View Case Study
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                          </div>
+                          
                           <div className="flex items-center gap-2">
-                            {project.links.demo && (
-                              <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-ghost text-sm px-3 py-1.5"
-                              >
-                                Live Demo
-                                <ExternalLink size={14} aria-hidden="true" />
-                              </a>
+                            {project.links.github && (
+                              <span className="p-1.5 text-text-muted hover:text-text-primary transition-colors">
+                                <GithubIcon />
+                              </span>
                             )}
                           </div>
                         </div>

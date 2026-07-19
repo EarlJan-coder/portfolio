@@ -28,7 +28,7 @@ const experiences = [
     logo: "FAI",
   },
   {
-    id: "prostk-hub",
+    id: "prostack-hub",
     title: "Full-Stack Engineer Intern",
     company: "ProStackHub",
     location: "Remote",
@@ -43,7 +43,7 @@ const experiences = [
       "Deploying to Vercel and managing CI/CD pipelines",
     ],
     tech: ["Next.js", "React", "Node.js", "Express.js", "PostgreSQL", "Drizzle ORM", "Tailwind CSS", "TypeScript"],
-    color: "success",
+    color: "accent",
     logo: "PSH",
   },
   {
@@ -62,7 +62,7 @@ const experiences = [
       "Collaborating in agile development environment",
     ],
     tech: ["Next.js", "React", "Node.js", "Express.js", "PostgreSQL", "Drizzle ORM", "JWT", "RBAC", "TypeScript"],
-    color: "warning",
+    color: "accent",
     logo: "COT",
   },
   {
@@ -70,7 +70,7 @@ const experiences = [
     title: "Web Developer",
     company: "Freelance / Independent Projects",
     location: "Remote",
-    period: "January 2026 – Present",
+    period: "Jan 2026 – Present",
     description:
       "React.js, Next.js, Node.js, Express.js, PostgreSQL; JWT/bcrypt/RBAC security work; ~35% average API response time improvement.",
     highlights: [
@@ -79,7 +79,6 @@ const experiences = [
       "Achieved ~35% average API response time improvement through optimization",
       "Designed PostgreSQL schemas and used Drizzle ORM for type-safe queries",
       "Applied security best practices: Helmet.js, CORS, rate limiting, input validation",
-      "Delivered projects for multiple clients across different domains",
     ],
     tech: ["React.js", "Next.js", "Node.js", "Express.js", "PostgreSQL", "Drizzle ORM", "JWT", "bcrypt", "RBAC", "Helmet.js", "TypeScript", "Tailwind CSS"],
     color: "default",
@@ -169,10 +168,10 @@ export default function ExperiencePage() {
                         </div>
                       </div>
                       <Badge variant={colorStyles[exp.color as keyof typeof colorStyles].badge as "accent" | "success" | "warning" | "neutral"} size="md" className="flex-shrink-0">
-                        {exp.color === "accent" && "AI Engineering"}
-                        {exp.color === "success" && "Full-Stack"}
-                        {exp.color === "warning" && "Full-Stack"}
-                        {exp.color === "default" && "Freelance"}
+                        {exp.id === "flyrank-ai" && "Backend AI"}
+                        {exp.id === "prostack-hub" && "Full-Stack"}
+                        {exp.id === "codeorbit-tech" && "Full-Stack"}
+                        {exp.id === "freelance" && "Freelance"}
                       </Badge>
                     </div>
 
@@ -190,7 +189,7 @@ export default function ExperiencePage() {
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.3 + i * 0.05, type: "spring", stiffness: 300 }}
                             className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2"
-                            style={{ backgroundColor: exp.color === "accent" ? "#4F46E5" : exp.color === "success" ? "#059669" : exp.color === "warning" ? "#D97706" : "#64748B" }}
+                            style={{ backgroundColor: "var(--color-accent)" }}
                           />
                           <span>{highlight}</span>
                         </li>

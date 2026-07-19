@@ -245,211 +245,166 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     <div className="min-h-screen bg-background">
       <div className="max-w-5xl mx-auto px-6 py-12 lg:py-20">
         {/* Back Link */}
-        <div className="mb-8">
-          <Link href="/projects" className="btn-ghost inline-flex items-center gap-2 text-sm">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <div className="mb-12">
+          <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-bold text-text-muted hover:text-accent transition-colors group">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-x-1 transition-transform">
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
-            Back to Projects
+            BACK TO PROJECTS
           </Link>
         </div>
 
-        {/* Header */}
-        <div className="mb-12">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="badge badge-accent">{project.category}</span>
+        {/* Header Section */}
+        <div className="mb-16">
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            <span className="px-3 py-1 rounded-full bg-accent-light text-accent text-xs font-bold uppercase tracking-widest border border-accent/10">
+              {project.category}
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-border-strong"></span>
+            <span className="text-xs font-bold text-text-muted uppercase tracking-widest">Case Study</span>
+          </div>
+
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-text-primary tracking-tighter leading-[0.9] mb-8">
+            {project.title}
+          </h1>
+          <p className="text-2xl text-text-secondary max-w-3xl font-medium leading-tight">
+            {project.subtitle}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 mt-10">
             {project.links.github && (
-              <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <a href={project.links.github} target="_blank" rel="noopener noreferrer" 
+                 className="flex items-center gap-2 bg-text-primary text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
                 </svg>
-                View Code
+                VIEW SOURCE
               </a>
             )}
             {"demo" in project.links && project.links.demo && (
-              <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <a href={project.links.demo} target="_blank" rel="noopener noreferrer" 
+                 className="flex items-center gap-2 bg-white border border-border px-6 py-3 rounded-full font-bold shadow-sm hover:shadow-md hover:border-accent hover:text-accent transition-all">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
                   <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                Live Demo
+                LIVE PREVIEW
               </a>
             )}
           </div>
-
-          <h1 className="text-4xl lg:text-5xl font-bold text-text-primary tracking-tight mb-4">
-            {project.title}
-          </h1>
-          <p className="text-lg text-text-secondary max-w-3xl">{project.subtitle}</p>
         </div>
 
-        {/* Metrics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        {/* Quick Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
           {project.metrics.map((metric, i) => (
-            <div key={i} className="card p-5 text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-accent mb-1">{metric.value}</div>
-              <div className="text-sm text-text-secondary">{metric.label}</div>
+            <div key={i} className="bg-white p-6 rounded-[24px] border border-border shadow-sm text-center">
+              <div className="text-3xl font-extrabold text-accent mb-1 leading-none">{metric.value}</div>
+              <div className="text-[10px] font-bold text-text-muted uppercase tracking-widest">{metric.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Description & Details */}
-          <div className="lg:col-span-2 space-y-8">
+        {/* Content Sections */}
+        <div className="grid lg:grid-cols-3 gap-16">
+          <div className="lg:col-span-2 space-y-16">
             {/* Overview */}
-            <section className="card p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-text-primary mb-4 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-[10px] bg-accent-light flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 16v-4"></path>
-                    <path d="M12 8h.01"></path>
-                  </svg>
-                </span>
-                Overview
+            <section>
+              <h2 className="text-3xl font-extrabold text-text-primary mb-6 flex items-center gap-3">
+                <span className="w-10 h-1 bg-accent rounded-full"></span>
+                The Challenge
               </h2>
-              <div className="prose prose-slate max-w-none text-text-secondary leading-relaxed">
-                <p className="mb-4">{project.details.overview}</p>
-                <p>{project.details.architecture}</p>
+              <div className="prose prose-slate max-w-none text-text-secondary leading-relaxed space-y-4 text-lg">
+                <p>{project.details.overview}</p>
               </div>
             </section>
 
-            {/* Technical Deep Dives */}
-            <section className="space-y-6">
-              <div className="card p-6 sm:p-8">
-                <h3 className="text-xl font-semibold text-text-primary mb-4 flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-[10px] bg-success-light flex items-center justify-center">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-success">
-                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            {/* Architecture / Implementation */}
+            <section className="bg-white rounded-[32px] border border-border shadow-soft p-10">
+              <h2 className="text-2xl font-extrabold text-text-primary mb-8 flex items-center gap-3">
+                Architecture & Security
+              </h2>
+              <div className="space-y-10">
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-success-light text-success flex items-center justify-center flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                      <line x1="8" y1="21" x2="16" y2="21"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
                     </svg>
-                  </span>
-                  Architecture
-                </h3>
-                <p className="text-text-secondary leading-relaxed">{project.details.architecture}</p>
-              </div>
-
-              {"blockchain" in project.details && project.details.blockchain && (
-                <div className="card p-6 sm:p-8">
-                  <h3 className="text-xl font-semibold text-text-primary mb-4 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-[10px] bg-warning-light flex items-center justify-center">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-warning">
-                        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-                        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-                        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
-                        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
-                      </svg>
-                    </span>
-                    Blockchain Integration
-                  </h3>
-                  <p className="text-text-secondary leading-relaxed">{project.details.blockchain}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-text-primary mb-2 text-lg">System Design</h4>
+                    <p className="text-text-secondary leading-relaxed">{project.details.architecture}</p>
+                  </div>
                 </div>
-              )}
 
-              {"ai" in project.details && project.details.ai && (
-                <div className="card p-6 sm:p-8">
-                  <h3 className="text-xl font-semibold text-text-primary mb-4 flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-[10px] bg-accent-light flex items-center justify-center">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
-                        <path d="M12 2a4 4 0 0 1 4 4c0 1.26-.58 2.41-1.5 3.17"></path>
-                        <path d="M8 22a4 4 0 0 0 4-4c0-1.26.58-2.41 1.5-3.17"></path>
-                        <path d="M2 12a4 4 0 0 1 4-4c0 1.26-.58 2.41-1.5 3.17"></path>
-                        <path d="M22 12a4 4 0 0 1-4 4c0-1.26.58-2.41 1.5-3.17"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                    </span>
-                    AI Implementation
-                  </h3>
-                  <p className="text-text-secondary leading-relaxed">{project.details.ai}</p>
-                </div>
-              )}
-
-              <div className="card p-6 sm:p-8">
-                <h3 className="text-xl font-semibold text-text-primary mb-4 flex items-center gap-2">
-                  <span className="w-8 h-8 rounded-[10px] bg-surface-hover flex items-center justify-center">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-text-secondary">
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-warning-light text-warning flex items-center justify-center flex-shrink-0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
-                  </span>
-                  Security & Performance
-                </h3>
-                <p className="text-text-secondary leading-relaxed mb-4">{project.details.security}</p>
-                {"performance" in project.details && project.details.performance && (
-                  <p className="text-text-secondary leading-relaxed">{project.details.performance}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-text-primary mb-2 text-lg">Security Measures</h4>
+                    <p className="text-text-secondary leading-relaxed">{project.details.security}</p>
+                  </div>
+                </div>
+                
+                {"blockchain" in project.details && (
+                  <div className="flex gap-6">
+                    <div className="w-12 h-12 rounded-2xl bg-accent-light text-accent flex items-center justify-center flex-shrink-0">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-text-primary mb-2 text-lg">Blockchain Implementation</h4>
+                      <p className="text-text-secondary leading-relaxed">{project.details.blockchain}</p>
+                    </div>
+                  </div>
                 )}
-              </div>
-            </section>
 
-            {/* Tech Stack */}
-            <section className="card p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-text-primary mb-5 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-[10px] bg-surface-hover flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-text-secondary">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
-                  </svg>
-                </span>
-                Technology Stack
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span key={t} className="tag">
-                    {t}
-                  </span>
-                ))}
+                {"ai" in project.details && (
+                  <div className="flex gap-6">
+                    <div className="w-12 h-12 rounded-2xl bg-accent-light text-accent flex items-center justify-center flex-shrink-0">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-text-primary mb-2 text-lg">AI Integration</h4>
+                      <p className="text-text-secondary leading-relaxed">{project.details.ai}</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
           </div>
 
-          {/* Right Column - Sidebar */}
-          <div className="space-y-6">
-            {/* Links Card */}
-            <div className="card p-6 sticky top-24">
-              <h3 className="font-semibold text-text-primary mb-4">Links</h3>
-              <div className="space-y-3">
-                {project.links.github && (
-                  <a
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary w-full justify-start"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    View Source Code
-                  </a>
-                )}
-              {"demo" in project.links && project.links.demo ? (
-                    <a
-                      href={project.links.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary w-full justify-start"
-                    >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                      </svg>
-                      Live Demo
-                    </a>
-                  ) : null}
+          {/* Sidebar Info */}
+          <div className="lg:col-span-1 space-y-10">
+            <div>
+              <h3 className="text-xs font-bold text-text-muted uppercase tracking-widest mb-6">Technologies Used</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span key={t} className="px-3 py-1.5 rounded-lg bg-surface-hover border border-border text-xs font-bold text-text-secondary uppercase tracking-tighter">
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Highlights Card */}
-            <div className="card p-6 sticky top-24" style={{ top: "calc(24px + 200px)" }}>
-              <h3 className="font-semibold text-text-primary mb-4">Key Highlights</h3>
-              <ul className="space-y-3">
+            <div className="bg-text-primary p-8 rounded-[24px] text-white">
+              <h3 className="text-xl font-bold mb-4">Project Highlights</h3>
+              <ul className="space-y-4">
                 {project.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-text-secondary">
-                    <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent mt-1.5" />
-                    <span className="leading-relaxed">{h}</span>
+                  <li key={i} className="flex items-start gap-3 text-sm text-white/80 leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>
+                    {h}
                   </li>
                 ))}
               </ul>
