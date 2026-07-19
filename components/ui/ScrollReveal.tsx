@@ -41,6 +41,7 @@ export function ScrollReveal({
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, ...directionVariants[direction] }}
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={cn(className)}
+      {...props}
     >
       {children}
     </motion.div>

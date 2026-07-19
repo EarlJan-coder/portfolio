@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Menu, ChevronRight } from "lucide-react";
+import { Mail, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const GithubIcon = () => (
@@ -97,9 +97,9 @@ export function Sidebar() {
 function SidebarContent({ pathname }: { pathname: string }) {
   return (
     <div className="flex flex-col h-full p-6">
-      <div className="flex flex-col items-center text-center mb-10 pt-4 border-b border-border pb-6">
-        <div className="relative mb-4">
-          <div className="w-24 h-24 rounded-full bg-accent-light flex items-center justify-center overflow-hidden ring-4 ring-accent-light">
+      <div className="flex flex-col items-center text-center mb-10 pt-4 pb-6">
+        <div className="relative mb-4 group">
+          <div className="w-24 h-24 rounded-full bg-accent-light flex items-center justify-center overflow-hidden ring-4 ring-accent-light transition-transform duration-300 group-hover:scale-105">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent">
               <circle cx="12" cy="8" r="5"></circle>
               <path d="M20 21a8 8 0 0 0-16 0"></path>
@@ -109,17 +109,19 @@ function SidebarContent({ pathname }: { pathname: string }) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.3 }}
-            className="absolute -bottom-2 -right-2 w-5 h-5 bg-success rounded-full border-4 border-surface flex items-center justify-center"
+            className="absolute -bottom-1 -right-1 w-6 h-6 bg-success rounded-full border-4 border-surface flex items-center justify-center"
           >
-            <span className="w-1.5 h-1.5 bg-success rounded-full" />
+            <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
           </motion.div>
         </div>
-        <h1 className="text-2xl font-bold text-text-primary tracking-tight">Earl Jhon Malatag</h1>
-        <p className="text-sm text-text-secondary mt-1 font-medium">Full-Stack Developer</p>
+        <h1 className="text-2xl font-bold text-text-primary tracking-tight leading-tight">Earl Jhon Malatag</h1>
+        <p className="text-xs text-text-muted mt-2 font-semibold uppercase tracking-wider">
+          Full-Stack Developer | Backend Security | AI Engineering
+        </p>
       </div>
 
-      <nav className="flex-1" aria-label="Main navigation">
-        <ul className="space-y-1" role="list">
+      <nav className="flex-1 px-2" aria-label="Main navigation">
+        <ul className="space-y-2" role="list">
           {navItems.map((item, index) => (
             <NavLink
               key={item.href}
@@ -131,22 +133,22 @@ function SidebarContent({ pathname }: { pathname: string }) {
         </ul>
       </nav>
 
-      <div className="border-t border-border pt-6 mt-auto">
-        <div className="flex items-center justify-center gap-4">
-{socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="p-2 rounded-[10px] text-text-secondary hover:text-accent hover:bg-accent-light transition-all duration-200"
-              >
-                {social.label === "GitHub" ? <GithubIcon /> : social.label === "LinkedIn" ? <LinkedinIcon /> : <Mail size={20} />}
-              </a>
-            ))}
+      <div className="pt-6 mt-auto">
+        <div className="flex items-center justify-center gap-3">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className="p-2.5 rounded-full text-text-secondary hover:text-accent hover:bg-accent-light border border-transparent hover:border-accent/10 transition-all duration-200"
+            >
+              {social.label === "GitHub" ? <GithubIcon /> : social.label === "LinkedIn" ? <LinkedinIcon /> : <Mail size={18} />}
+            </a>
+          ))}
         </div>
-        <p className="text-xs text-text-muted text-center mt-6 font-medium">
+        <p className="text-[10px] text-text-muted text-center mt-6 font-medium uppercase tracking-[0.1em]">
           © 2026 Earl Jhon Malatag
         </p>
       </div>
@@ -163,32 +165,23 @@ function NavLink({ item, pathname, index }: { item: typeof navItems[0]; pathname
       <Link
         href={item.href}
         className={cn(
-          "flex items-center gap-3 px-4 py-3 rounded-[12px] text-text-secondary font-medium transition-all duration-200 relative overflow-hidden group",
+          "flex items-center gap-3 px-4 py-3 rounded-full text-text-secondary font-medium transition-all duration-200 relative group",
           isActive
-            ? "bg-accent-light text-accent"
-            : "hover:bg-surface-hover hover:text-text-primary"
+            ? "bg-accent text-white shadow-md shadow-accent/20"
+            : "hover:bg-accent-light hover:text-accent"
         )}
-        style={{ transitionDelay: `${index * 30}ms` }}
       >
-        <span className="flex-shrink-0" aria-hidden="true">{Icon}</span>
-        <span className="flex-1">{item.label}</span>
+        <span className={cn("flex-shrink-0 transition-colors duration-200", isActive ? "text-white" : "text-text-muted group-hover:text-accent")} aria-hidden="true">
+          {Icon}
+        </span>
+        <span className="flex-1 text-sm">{item.label}</span>
         {isActive && (
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="absolute right-3 top-1/2 -translate-y-1/2"
-          >
-            <ChevronRight size={16} className="text-accent" />
-          </motion.div>
+            layoutId="active-pill"
+            className="absolute inset-0 bg-accent rounded-full -z-10"
+            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+          />
         )}
-        <motion.div
-          layoutId="active-indicator"
-          className={cn(
-            "absolute left-0 top-0 h-full w-1 bg-accent rounded-r-[12px]",
-            isActive ? "opacity-100" : "opacity-0"
-          )}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        />
       </Link>
     </li>
   );
