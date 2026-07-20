@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Check, Github, ArrowUpRight } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { projects } from "@/lib/data";
@@ -83,7 +84,7 @@ export function Projects() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text-primary"
                     >
-                      <Github size={16} /> Source
+                      <FaGithub size={16} /> Source
                     </a>
                     {project.demo && (
                       <a

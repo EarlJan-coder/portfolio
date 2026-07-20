@@ -17,10 +17,10 @@ export function Footer() {
 
           <div className="flex items-center gap-3">
             <FooterLink href={profile.github} label="GitHub">
-              <Github size={18} />
+              <FaGithub size={18} />
             </FooterLink>
             <FooterLink href={profile.linkedin} label="LinkedIn">
-              <Linkedin size={18} />
+              <FaLinkedin size={18} />
             </FooterLink>
             <FooterLink href={`mailto:${profile.email}`} label="Email">
               <Mail size={18} />

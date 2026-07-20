@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Copy, Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import { Check, Copy, Mail, MapPin, Send } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Reveal } from "@/components/ui/Reveal";
 import { profile } from "@/lib/data";
 
@@ -31,8 +32,8 @@ export function Contact() {
   };
 
   const links = [
-    { icon: Github, label: "GitHub", value: "EarlJan-coder", href: profile.github },
-    { icon: Linkedin, label: "LinkedIn", value: "earl-malatag", href: profile.linkedin },
+    { icon: FaGithub, label: "GitHub", value: "EarlJan-coder", href: profile.github },
+    { icon: FaLinkedin, label: "LinkedIn", value: "earl-malatag", href: profile.linkedin },
     { icon: MapPin, label: "Location", value: profile.location, href: undefined },
   ];
 
