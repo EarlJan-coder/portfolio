@@ -1,27 +1,54 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { Geist, Geist_Mono } from "next/font/google";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { CursorGlow } from "@/components/ui/CursorGlow";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Earl Jhon Malatag — Full-Stack Developer",
-  description: "Full-Stack Developer | Backend Security | AI Engineering. Building scalable web applications with Next.js, Node.js, PostgreSQL, and AI.",
+  title: "Earl Jhon Malatag — Full-Stack Developer, Backend Security & AI Engineering",
+  description:
+    "Portfolio of Earl Jhon Malatag — a full-stack developer specializing in secure REST API development, backend security, and AI-assisted application engineering with Next.js, Node.js, and PostgreSQL.",
+  keywords: [
+    "Earl Jhon Malatag",
+    "Full-Stack Developer",
+    "Backend Security",
+    "AI Engineering",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "RAG",
+    "LLM",
+  ],
+  authors: [{ name: "Earl Jhon Malatag" }],
   openGraph: {
     title: "Earl Jhon Malatag — Full-Stack Developer",
-    description: "Full-Stack Developer | Backend Security | AI Engineering",
+    description:
+      "Full-Stack Developer • Backend Security • AI Engineering. Building secure systems, intelligent software, and scalable experiences.",
     type: "website",
+    url: "https://earljan-portfolio.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Earl Jhon Malatag — Full-Stack Developer",
+    description: "Full-Stack Developer • Backend Security • AI Engineering",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F8FAFC",
+  themeColor: "#090909",
   width: "device-width",
   initialScale: 1,
 };
@@ -32,16 +59,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body className="min-h-full bg-background text-text-primary flex">
-        <Sidebar />
-        <main className="flex-1 lg:ml-72 min-w-0">
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} bg-background antialiased`}
+    >
+      <body className="min-h-screen bg-background text-text-primary">
+        <SmoothScroll>
+          <ScrollProgress />
+          <CursorGlow />
+          <div className="noise" aria-hidden="true" />
           {children}
-        </main>
+        </SmoothScroll>
       </body>
     </html>
   );
